@@ -3,48 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produk Digital</title>
+  <title>Checkout Produk Digital</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <h1>Selamat datang di Toko Produk Digital</h1>
-    <p>Pilih produk dan metode pembayaran yang sesuai</p>
+    <p>Pilih produk dan harga yang sesuai</p>
   </header>
 
-  <!-- Pilihan Produk -->
+  <!-- Kotak Geser untuk Pilih Produk -->
   <section class="products">
     <div class="product-card">
-      <h3>3 Droplet DigitalOcean</h3>
-      <div class="price-option">
-        <input type="checkbox" id="product1" value="100000" class="product-checkbox">
-        <label for="product1">Rp 100.000</label>
+      <h3>DigitalOcean VPS</h3>
+      <button class="toggle-button" id="product1-btn">Pilih Produk</button>
+      <div class="price-options" id="product1-options" style="display:none;">
+        <input type="checkbox" id="product1-1" class="price-option" data-price="100000" data-name="3 Droplet 1GB">
+        <label for="product1-1">Rp 100.000 - 3 Droplet 1GB</label><br>
+
+        <input type="checkbox" id="product1-2" class="price-option" data-price="150000" data-name="10 Droplet 1GB">
+        <label for="product1-2">Rp 150.000 - 10 Droplet 1GB</label><br>
       </div>
     </div>
 
     <div class="product-card">
-      <h3>10 Droplet DigitalOcean</h3>
-      <div class="price-option">
-        <input type="checkbox" id="product2" value="150000" class="product-checkbox">
-        <label for="product2">Rp 150.000</label>
-      </div>
-    </div>
+      <h3>Panel Pterodactyl</h3>
+      <button class="toggle-button" id="product2-btn">Pilih Produk</button>
+      <div class="price-options" id="product2-options" style="display:none;">
+        <input type="checkbox" id="product2-1" class="price-option" data-price="1000" data-name="1GB Panel">
+        <label for="product2-1">Rp 1.000 - 1GB Panel</label><br>
 
-    <div class="product-card">
-      <h3>Panel Pterodactyl 1GB</h3>
-      <div class="price-option">
-        <input type="checkbox" id="product3" value="1000" class="product-checkbox">
-        <label for="product3">Rp 1.000</label>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <h3>Panel Pterodactyl Unli</h3>
-      <div class="price-option">
-        <input type="checkbox" id="product4" value="10000" class="product-checkbox">
-        <label for="product4">Rp 10.000</label>
+        <input type="checkbox" id="product2-2" class="price-option" data-price="10000" data-name="Unli Panel">
+        <label for="product2-2">Rp 10.000 - Unli Panel</label><br>
       </div>
     </div>
   </section>
@@ -52,7 +43,7 @@
   <!-- Ringkasan Pembelian -->
   <section id="order-summary">
     <h2>Ringkasan Pembelian</h2>
-    <p id="selected-products">Produk: <span id="selected-product-name">Belum ada produk yang dipilih</span></p>
+    <p>Produk: <span id="selected-product-name">Belum ada produk yang dipilih</span></p>
     <p>Total Harga: Rp <span id="total-price">0</span></p>
     <button id="checkout-button">Lanjutkan ke Pembayaran</button>
   </section>
@@ -80,11 +71,24 @@
     <button id="confirm-payment">Konfirmasi Pembayaran</button>
   </section>
 
-  <!-- Pengiriman Produk -->
-  <section id="send-product" style="display:none;">
-    <h2>Pengiriman Produk</h2>
-    <p>Produk Anda akan dikirimkan ke email atau WhatsApp.</p>
-    <button onclick="sendProduct()">Kirim Produk</button>
+  <!-- Form Pengisian Data Pembeli -->
+  <section id="buyer-info" style="display:none;">
+    <h2>Formulir Data Pembeli</h2>
+    <form id="buyer-form">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Nomor Telepon (WhatsApp):</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <button type="submit">Kirim Data</button>
+    </form>
+  </section>
+
+  <!-- Proses Pengiriman Produk -->
+  <section id="process-status" style="display:none;">
+    <h2>Status Pembayaran</h2>
+    <p>Proses Pembayaran: <strong id="status">Proses</strong></p>
   </section>
 
   <script src="scripts.js"></script>
