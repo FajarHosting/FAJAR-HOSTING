@@ -1,107 +1,213 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Toko FAJAR DIGITAL</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pembelian Produk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fb;
+        }
+        .container {
+            width: 70%;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .product-group, .payment-group {
+            margin-bottom: 20px;
+        }
+        .product-group label, .payment-group label {
+            font-weight: normal;
+            color: #555;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .checkbox-group label {
+            width: 45%;
+            margin: 5px 0;
+        }
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        .section-title {
+            background-color: #f2f2f2;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .file-upload {
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+        }
+        .file-upload input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .product-group label span {
+            float: right;
+            font-weight: normal;
+            color: #4CAF50;
+        }
+    </style>
+    <script>
+        function showPaymentDetails() {
+            const paymentMethod = document.querySelector('input[name="pembayaran"]:checked');
+            const paymentDetailsSection = document.getElementById('payment-details');
+            const uploadSection = document.getElementById('upload-section');
+            const whatsappSection = document.getElementById('whatsapp-section');
+            const danaDetails = document.getElementById('dana-details');
+            const ovoDetails = document.getElementById('ovo-details');
+            const gopayDetails = document.getElementById('gopay-details');
+            const qrisDetails = document.getElementById('qris-details');
 
-    header {
-      background: #007bff;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+            // Hide all payment details sections initially
+            danaDetails.style.display = 'none';
+            ovoDetails.style.display = 'none';
+            gopayDetails.style.display = 'none';
+            qrisDetails.style.display = 'none';
+            
+            if (paymentMethod) {
+                paymentDetailsSection.style.display = 'block';
+                uploadSection.style.display = 'block';
+                whatsappSection.style.display = 'block';
 
-    .product-box {
-      background: white;
-      margin: 20px auto;
-      padding: 20px;
-      width: 90%;
-      max-width: 500px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .product-box h2 {
-      margin-top: 0;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-
-    input[type="text"], input[type="email"] {
-      width: 100%;
-      padding: 8px;
-      margin-top: 4px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    .harga-list {
-      margin-top: 10px;
-    }
-
-    .harga-list label {
-      display: block;
-    }
-
-    button {
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 12px;
-      margin-top: 20px;
-      width: 100%;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #0056b3;
-    }
-  </style>
+                // Display specific payment method details
+                if (paymentMethod.value === 'Dana') {
+                    danaDetails.style.display = 'block';
+                } else if (paymentMethod.value === 'OVO') {
+                    ovoDetails.style.display = 'block';
+                } else if (paymentMethod.value === 'GoPay') {
+                    gopayDetails.style.display = 'block';
+                } else if (paymentMethod.value === 'QRIS') {
+                    qrisDetails.style.display = 'block';
+                }
+            } else {
+                paymentDetailsSection.style.display = 'none';
+                uploadSection.style.display = 'none';
+                whatsappSection.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
 
-<header>
-  <h1>Toko Produk Digital</h1>
-  <p>Pilih produk dan kirim pesanan</p>
-</header>
+    <div class="container">
+        <h2>TOKO FAJAR STORE</h2>
+        
+        <form action="https://formspree.io/f/mldbejjj" method="POST">
+            
+            <!-- Pilihan Produk DigitalOcean -->
+            <div class="section-title">Pilih Produk DigitalOcean:</div>
+            <div class="product-group">
+                <label><input type="checkbox" name="produk[]" value="3 Droplet DigitalOcean"> 3 Droplet DigitalOcean <span>Rp100,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="10 Droplet DigitalOcean"> 10 Droplet DigitalOcean <span>Rp150,000</span></label>
+            </div>
+            
+            <!-- Pilihan Produk Panel -->
+            <div class="section-title">Pilih Produk Panel:</div>
+            <div class="product-group checkbox-group">
+                <label><input type="checkbox" name="produk[]" value="1GB Panel"> 1GB Panel <span>Rp1,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="2GB Panel"> 2GB Panel <span>Rp2,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="3GB Panel"> 3GB Panel <span>Rp3,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="4GB Panel"> 4GB Panel <span>Rp4,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="5GB Panel"> 5GB Panel <span>Rp5,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="6GB Panel"> 6GB Panel <span>Rp6,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="7GB Panel"> 7GB Panel <span>Rp7,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="8GB Panel"> 8GB Panel <span>Rp8,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="9GB Panel"> 9GB Panel <span>Rp9,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="Reseller Panel"> Reseller Panel <span>Rp15,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="Unlimited Panel"> Unlimited Panel <span>Rp10,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="Admin Panel"> Admin Panel <span>Rp20,000</span></label>
+                <label><input type="checkbox" name="produk[]" value="PT Panel"> PT Panel <span>Rp25,000</span></label>
+            </div>
+            
+            <!-- Pilihan Pembayaran -->
+            <div class="section-title">Pilih Metode Pembayaran:</div>
+            <div class="payment-group">
+                <label><input type="radio" name="pembayaran" value="Dana" onclick="showPaymentDetails()"> Dana</label>
+                <label><input type="radio" name="pembayaran" value="OVO" onclick="showPaymentDetails()"> OVO</label>
+                <label><input type="radio" name="pembayaran" value="GoPay" onclick="showPaymentDetails()"> GoPay</label>
+                <label><input type="radio" name="pembayaran" value="QRIS" onclick="showPaymentDetails()"> QRIS</label>
+            </div>
 
-<section class="product-box">
-  <h2>DigitalOcean Droplet</h2>
-
-  <form action="https://formsubmit.co/fajarsetiawan12322@gmail.com" method="POST">
-    <!-- Ganti dengan email kamu -->
-    <input type="hidden" name="_subject" value="Pesanan Baru DigitalOcean">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-
-    <label>Nama Pembeli:</label>
-    <input type="text" name="nama" required>
-
-    <label>Email Pembeli:</label>
-    <input type="email" name="email_pembeli" required>
-
-    <label>No WhatsApp:</label>
-    <input type="text" name="wa_pembeli" required>
-
-    <div class="harga-list">
-      <label><input type="radio" name="produk_digitalocean" value="3 Droplet - Rp100.000" required> 3 Droplet - Rp100.000</label>
-      <label><input type="radio" name="produk_digitalocean" value="10 Droplet - Rp150.000"> 10 Droplet - Rp150.000</label>
+            <!-- Nomor Pembayaran Setelah Pilih Pembayaran -->
+<div id="payment-details" style="display: none;">
+    <div id="dana-details" style="display: none;">
+        <label>Nomor Pembayaran Dana: 085179732934</label>
     </div>
+    <div id="ovo-details" style="display: none;">
+        <label>Nomor Pembayaran OVO: 085600753349</label>
+    </div>
+    <div id="gopay-details" style="display: none;">
+        <label>Nomor Pembayaran GoPay: 085600753349</label>
+    </div>
+    <div id="qris-details" style="display: none;">
+        <label>Nomor Pembayaran QRIS: tidak tersedia</label>
+    </div>
+</div>
 
-    <button type="submit">Kirim Pesanan</button>
-  </form>
-</section>
+<!-- WhatsApp Section -->
+<div id="whatsapp-section" style="display: none;">
+    <label for="whatsapp">Masukkan Nomor WhatsApp Anda:</label>
+    <input type="text" id="whatsapp" name="whatsapp" required placeholder="Contoh: 0812XXXXXXX">
+</div>
+
+<!-- Upload Bukti Pembayaran (Optional) -->
+<div id="upload-section" style="display: none;">
+    <label for="bukti_pembayaran">Upload Bukti Pembayaran:</label>
+    <input type="file" id="bukti_pembayaran" name="bukti_pembayaran" accept="image/*">
+</div>
+
+<!-- Submit Button -->
+<div class="submit-section">
+    <button type="submit" class="submit-button">Kirim Data Pembelian</button>
+</div>
+
+</form>
+</div>
 
 </body>
 </html>
