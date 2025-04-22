@@ -2,159 +2,106 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout Produk Digital</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Toko FAJAR DIGITAL</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-box {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .product-box h2 {
+      margin-top: 0;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .harga-list {
+      margin-top: 10px;
+    }
+
+    .harga-list label {
+      display: block;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px;
+      margin-top: 20px;
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <h1>Selamat datang di Toko Produk Digital</h1>
-    <p>Pilih produk dan harga yang sesuai</p>
-  </header>
+<header>
+  <h1>Toko Produk Digital</h1>
+  <p>Pilih produk dan kirim pesanan</p>
+</header>
 
-  <!-- Kotak Geser untuk Pilih Produk -->
-  <section class="products">
-    <div class="product-card">
-      <h3>DigitalOcean VPS</h3>
-      <button class="toggle-button" id="product1-btn">Pilih Produk</button>
-      <div class="price-options" id="product1-options" style="display:none;">
-        <div class="price-option">
-          <input type="radio" id="product1-1" name="product1" data-price="100000" data-name="3 Droplet 1GB">
-          <label for="product1-1">Rp 100.000 - 3 Droplet 1GB</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product1-2" name="product1" data-price="150000" data-name="10 Droplet 1GB">
-          <label for="product1-2">Rp 150.000 - 10 Droplet 1GB</label>
-        </div>
-      </div>
+<section class="product-box">
+  <h2>DigitalOcean Droplet</h2>
+
+  <form action="https://formsubmit.co/fajarsetiawan12322@gmail.com" method="POST">
+    <!-- Ganti dengan email kamu -->
+    <input type="hidden" name="_subject" value="Pesanan Baru DigitalOcean">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <label>Nama Pembeli:</label>
+    <input type="text" name="nama" required>
+
+    <label>Email Pembeli:</label>
+    <input type="email" name="email_pembeli" required>
+
+    <label>No WhatsApp:</label>
+    <input type="text" name="wa_pembeli" required>
+
+    <div class="harga-list">
+      <label><input type="radio" name="produk_digitalocean" value="3 Droplet - Rp100.000" required> 3 Droplet - Rp100.000</label>
+      <label><input type="radio" name="produk_digitalocean" value="10 Droplet - Rp150.000"> 10 Droplet - Rp150.000</label>
     </div>
 
-    <div class="product-card">
-      <h3>Panel Pterodactyl</h3>
-      <button class="toggle-button" id="product2-btn">Pilih Produk</button>
-      <div class="price-options" id="product2-options" style="display:none;">
-        <div class="price-option">
-          <input type="radio" id="product2-1" name="product2" data-price="1000" data-name="1GB Panel">
-          <label for="product2-1">Rp 1.000 - 1GB Panel</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product2-2" name="product2" data-price="2000" data-name="2GB Panel">
-          <label for="product2-2">Rp 2.000 - 2GB Panel</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product2-3" name="product2" data-price="3000" data-name="3GB Panel">
-          <label for="product2-3">Rp 3.000 - 3GB Panel</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product2-4" name="product2" data-price="4000" data-name="4GB Panel">
-          <label for="product2-4">Rp 4.000 - 4GB Panel</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product2-5" name="product2" data-price="5000" data-name="5GB Panel">
-          <label for="product2-5">Rp 5.000 - 5GB Panel</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product2-6" name="product2" data-price="6000" data-name="6GB Panel">
-          <label for="product2-6">Rp 6.000 - 6GB Panel</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product2-7" name="product2" data-price="7000" data-name="7GB Panel">
-          <label for="product2-7">Rp 7.000 - 7GB Panel</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product2-8" name="product2" data-price="8000" data-name="8GB Panel">
-          <label for="product2-8">Rp 8.000 - 8GB Panel</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product2-9" name="product2" data-price="9000" data-name="9GB Panel">
-          <label for="product2-9">Rp 9.000 - 9GB Panel</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product2-10" name="product2" data-price="10000" data-name="10GB Panel">
-          <label for="product2-10">Rp 10.000 - 10GB Panel</label>
-        </div>
-        <div class="price-option">
-          <input type="radio" id="product2-11" name="product2" data-price="10000" data-name="Unli Panel">
-          <label for="product2-11">Rp 10.000 - Unli Panel</label>
-        </div>
-      </div>
-    </div>
+    <button type="submit">Kirim Pesanan</button>
+  </form>
+</section>
 
-    <div class="product-card">
-      <h3>Reseller Panel</h3>
-      <button class="toggle-button" id="product3-btn">Pilih Produk</button>
-      <div class="price-options" id="product3-options" style="display:none;">
-        <div class="price-option">
-          <input type="radio" id="product3-1" name="product3" data-price="10000" data-name="Reseller Panel">
-          <label for="product3-1">Rp 10.000 - Reseller Panel</label>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <h3>Panel PT</h3>
-      <button class="toggle-button" id="product4-btn">Pilih Produk</button>
-      <div class="price-options" id="product4-options" style="display:none;">
-        <div class="price-option">
-          <input type="radio" id="product4-1" name="product4" data-price="20000" data-name="PT Panel">
-          <label for="product4-1">Rp 20.000 - PT Panel</label>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ringkasan Pembelian -->
-  <section id="order-summary">
-    <h2>Ringkasan Pembelian</h2>
-    <p>Produk: <span id="selected-product-name">Belum ada produk yang dipilih</span></p>
-    <p>Total Harga: Rp <span id="total-price">0</span></p>
-    <button id="checkout-button">Lanjutkan ke Pembayaran</button>
-  </section>
-
-  <!-- Pembayaran Section -->
-  <section id="payment-section" style="display:none;">
-    <h2>Pembayaran</h2>
-    <p>Silakan pilih metode pembayaran:</p>
-    <div>
-      <input type="radio" id="bank-transfer" name="payment-method" value="Bank Transfer">
-      <label for="bank-transfer">Bank Transfer</label>
-    </div>
-    <div>
-      <input type="radio" id="ovo" name="payment-method" value="OVO">
-      <label for="ovo">OVO</label>
-    </div>
-    <div>
-      <input type="radio" id="gopay" name="payment-method" value="GoPay">
-      <label for="gopay">GoPay</label>
-    </div>
-    <div>
-      <input type="radio" id="dana" name="payment-method" value="Dana">
-      <label for="dana">Dana</label>
-    </div>
-    <button id="confirm-payment">Konfirmasi Pembayaran</button>
-  </section>
-
-  <!-- Form Pengisian Data Pembeli -->
-  <section id="buyer-info" style="display:none;">
-    <h2>Formulir Data Pembeli</h2>
-    <form id="buyer-form">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="phone">Nomor Telepon (WhatsApp):</label>
-      <input type="tel" id="phone" name="phone" required>
-
-      <button type="submit">Kirim Data</button>
-    </form>
-  </section>
-
-  <!-- Proses Pengiriman Produk -->
-  <section id="process-status" style="display:none;">
-    <h2>Status Pembayaran</h2>
-    <p>Proses Pembayaran: <strong id="status">Proses</strong></p>
-  </section>
-
-  <script src="scripts.js"></script>
 </body>
 </html>
