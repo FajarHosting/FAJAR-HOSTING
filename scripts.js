@@ -1,49 +1,45 @@
 // scripts.js
-
-// Fungsi untuk menghitung total harga berdasarkan produk yang dipilih
-document.querySelectorAll('.product-checkbox').forEach(checkbox => {
-  checkbox.addEventListener('change', function() {
-    let selectedProducts = document.querySelectorAll('.product-checkbox:checked');
-    let totalPrice = 0;
-    let productNames = [];
-
-    selectedProducts.forEach(product => {
-      totalPrice += parseInt(product.value);
-      productNames.push(product.closest('.product-card').querySelector('h3').innerText);
-    });
-
-    // Update ringkasan pembelian
-    document.getElementById('selected-product-name').innerText = productNames.join(", ") || 'Belum ada produk yang dipilih';
-    document.getElementById('total-price').innerText = totalPrice.toLocaleString();
+document.querySelectorAll('.toggle-button').forEach(button => {
+  button.addEventListener('click', function() {
+    const options = this.nextElementSibling;
+    options.style.display = (options.style.display === 'none' || options.style.display === '') ? 'block' : 'none';
   });
 });
 
-// Fungsi untuk menampilkan halaman pembayaran setelah klik checkout
-document.getElementById('checkout-button').addEventListener('click', function() {
-  let total = parseInt(document.getElementById('total-price').innerText.replace(/\./g, ''));
-  if (total > 0) {
-    document.querySelector('.products').style.display = 'none';
-    document.getElementById('order-summary').style.display = 'none';
-    document.getElementById('payment-section').style.display = 'block';
-  } else {
-    alert("Silakan pilih produk terlebih dahulu.");
-  }
+const priceOptions = document.querySelectorAll('.price-option');
+const totalPriceDisplay = document.getElementById("total-price");
+const selectedProductNameDisplay = document.getElementById("selected-product-name");
+const checkoutButton = document.getElementById("checkout-button");
+
+let totalPrice = 0;
+let selectedProductName = "";
+
+priceOptions.forEach(option => {
+  option.addEventListener('change', () => {
+    const price = parseInt(option.dataset.price);
+    const name = option.dataset.name;
+
+    if (option.checked) {
+      totalPrice += price;
+      selectedProductName = name;
+    } else {
+      totalPrice -= price;
+      selectedProductName = '';
+    }
+
+    updateTotalPrice();
+  });
 });
 
-// Fungsi untuk mengonfirmasi pembayaran
-document.getElementById('confirm-payment').addEventListener('click', function() {
-  let paymentMethod = document.querySelector('input[name="payment-method"]:checked');
-  if (paymentMethod) {
-    alert(`Pembayaran dengan metode: ${paymentMethod.value} berhasil!`);
-    document.getElementById('payment-section').style.display = 'none';
-    document.getElementById('send-product').style.display = 'block';
-  } else {
-    alert("Silakan pilih metode pembayaran.");
-  }
-});
-
-// Fungsi untuk mengirimkan produk (otomatisasi pengiriman)
-function sendProduct() {
-  alert("Produk telah dikirimkan ke email atau WhatsApp Anda.");
-  // Di sini, kamu bisa menambahkan pengiriman email atau WhatsApp menggunakan API (misalnya, dengan Node.js atau PHP)
+function updateTotalPrice() {
+  totalPriceDisplay.textContent = "Rp " + totalPrice;
+  selectedProductNameDisplay.textContent = selectedProductName || "Belum ada produk yang dipilih";
 }
+
+checkoutButton.addEventListener('click', function() {
+  if (totalPrice > 0) {
+    document.getElementById("payment-section").style.display = 'block';
+  } else {
+    alert("Pilih produk terlebih dahulu!");
+  }
+});
