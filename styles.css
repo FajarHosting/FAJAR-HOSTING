@@ -22,14 +22,7 @@ h1, p {
   display: flex;
   justify-content: center;
   margin: 30px 0;
-}
-
-.carousel-container {
-  display: flex;
-  overflow-x: auto;
   gap: 20px;
-  padding: 10px 0;
-  scroll-behavior: smooth;
 }
 
 .product-card {
@@ -39,14 +32,7 @@ h1, p {
   width: 250px;
   text-align: center;
   border-radius: 10px;
-  cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-.product-card:hover {
-  background-color: #1a4bbf;
-  transform: scale(1.05);
 }
 
 .product-card h3 {
@@ -54,8 +40,8 @@ h1, p {
   margin: 0 0 10px;
 }
 
-.product-card p {
-  font-size: 1.1em;
+.price-option {
+  margin-top: 10px;
 }
 
 #order-summary {
@@ -83,7 +69,11 @@ h1, p {
   margin-top: 20px;
 }
 
-#payment-section button, #send-product button {
+#payment-section input {
+  margin: 10px 0;
+}
+
+#payment-section button {
   background-color: #28a745;
   color: white;
   padding: 12px 25px;
@@ -92,6 +82,19 @@ h1, p {
   font-size: 1.2em;
 }
 
-#payment-section button:hover, #send-product button:hover {
+#payment-section button:hover {
   background-color: #218838;
+}
+
+#send-product button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+#send-product button:hover {
+  background-color: #0056b3;
 }
