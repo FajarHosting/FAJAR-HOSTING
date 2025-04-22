@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produk Digital</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Selamat datang di Toko Fajar Hosting</h1>
+    <p>Pilih produk yang Anda inginkan dan lanjutkan ke pembayaran</p>
+  </header>
+
+  <!-- Carousel Produk -->
+  <section class="products">
+    <div class="carousel-container">
+      <div class="product-card" data-product="DigitalOcean-3" data-price="100000">
+        <h3>3 Droplet DigitalOcean</h3>
+        <p>Rp 100.000</p>
+      </div>
+
+      <div class="product-card" data-product="DigitalOcean-10" data-price="150000">
+        <h3>10 Droplet DigitalOcean</h3>
+        <p>Rp 150.000</p>
+      </div>
+
+      <div class="product-card" data-product="Pterodactyl-1GB" data-price="1000">
+        <h3>Panel Pterodactyl 1GB</h3>
+        <p>Rp 1.000</p>
+      </div>
+
+      <div class="product-card" data-product="Pterodactyl-Unli" data-price="10000">
+        <h3>Panel Pterodactyl Unli</h3>
+        <p>Rp 10.000</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ringkasan Pembelian -->
+  <section id="order-summary">
+    <h2>Ringkasan Pembelian</h2>
+    <p id="selected-products">Produk: <span id="selected-product-name">Belum ada produk yang dipilih</span></p>
+    <p>Total Harga: Rp <span id="total-price">0</span></p>
+    <button id="checkout-button">Lanjutkan ke Pembayaran</button>
+  </section>
+
+  <!-- Pembayaran Section -->
+  <section id="payment-section" style="display:none;">
+    <h2>Pembayaran</h2>
+    <p>Silakan pilih metode pembayaran:</p>
+    <button onclick="payWithPayPal()">Bayar dengan PayPal</button>
+  </section>
+
+  <!-- Pengiriman Produk -->
+  <section id="send-product" style="display:none;">
+    <h2>Pengiriman Produk</h2>
+    <p>Produk Anda akan dikirimkan ke email atau WhatsApp.</p>
+    <button onclick="sendProduct()">Kirim Produk</button>
+  </section>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
