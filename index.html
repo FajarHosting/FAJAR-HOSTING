@@ -116,7 +116,7 @@
         </select>
       </p>
       <p class="stok">Stok: <span>UNLIMITED</span></p>
-      <button onclick="bukaForm('PANEL PETRODACTYL')">Beli</button>
+      <button onclick="bukaForm('PANEL PTERODACTYL')">Beli</button>
     </div>
 
     <div class="produk">
@@ -172,9 +172,7 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    emailjs.init("hwz5RTgQBfpvbpEYf");
     let produk = "";
 
     function bukaForm(namaProduk) {
@@ -192,15 +190,12 @@
         return;
       }
 
-      emailjs.send("service_6v44yts", "template_ys99gmw", {
-        produk: produk,
-        wa: wa
-      }).then(() => {
-        alert("Data berhasil dikirim!");
-        document.getElementById("payment-options").style.display = "block";
-      }).catch(() => {
-        alert("Gagal mengirim data!");
-      });
+      const noAdmin = "6285600753349"; // Ganti dengan nomor WhatsApp Admin kamu
+      const pesan = `Halo Admin, saya ingin beli produk:\n\nProduk: ${produk}\nNo WhatsApp Saya: ${wa}`;
+      const linkWA = `https://wa.me/${noAdmin}?text=${encodeURIComponent(pesan)}`;
+
+      window.open(linkWA, '_blank');
+      document.getElementById("payment-options").style.display = "block";
     }
 
     function salinPembayaran(metode) {
