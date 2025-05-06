@@ -3,227 +3,574 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produk Digital</title>
+  <title>FAJAR OFFICIAL - Produk Digital Premium</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #1f1c2c, #928dab);
-      color: #fff;
+    :root {
+      --primary: #6c5ce7;
+      --secondary: #a29bfe;
+      --dark: #2d3436;
+      --light: #f5f6fa;
+      --success: #00b894;
+      --danger: #ff7675;
+      --warning: #fdcb6e;
+      --info: #0984e3;
+    }
+    
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+    
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: var(--light);
+      line-height: 1.6;
       overflow-x: hidden;
     }
+    
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem;
-      background-color: #2c2c54;
+      padding: 1rem 2rem;
+      background-color: rgba(44, 44, 84, 0.9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
     }
+    
     .menu-toggle {
       font-size: 1.5rem;
       cursor: pointer;
+      transition: transform 0.3s ease;
     }
+    
+    .menu-toggle:hover {
+      transform: scale(1.1);
+    }
+    
     .close-sidebar {
       font-size: 1.5rem;
       cursor: pointer;
-      color: #fff;
+      color: var(--light);
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
       display: none;
     }
+    
     .sidebar {
       position: fixed;
       top: 0;
-      left: -200px;
-      width: 200px;
+      left: -250px;
+      width: 250px;
       height: 100%;
-      background-color: #2c2c54;
-      padding: 1rem;
-      transition: left 0.3s ease;
+      background-color: var(--dark);
+      padding: 2rem 1rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      overflow-y: auto;
     }
+    
     .sidebar.active {
       left: 0;
+      box-shadow: 5px 0 25px rgba(0,0,0,0.3);
     }
+    
     .sidebar a {
       display: block;
-      color: white;
+      color: var(--light);
       text-decoration: none;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
     }
+    
+    .sidebar a:hover {
+      background-color: var(--primary);
+      transform: translateX(5px);
+    }
+    
     .title {
       font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #a29bfe, #6c5ce7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+    
     .search-bar {
-      padding: 0.5rem;
+      padding: 0.7rem 1rem;
       width: 50%;
       max-width: 300px;
-      border-radius: 0.5rem;
+      border-radius: 30px;
       border: none;
+      background-color: rgba(255,255,255,0.1);
+      color: var(--light);
+      font-family: inherit;
+      transition: all 0.3s ease;
     }
+    
+    .search-bar:focus {
+      outline: none;
+      background-color: rgba(255,255,255,0.2);
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    
+    .search-bar::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1rem;
+      gap: 1.5rem;
       padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
+    
     .produk {
-      background-color: #3a3a52;
-      border-radius: 1rem;
-      padding: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      background-color: rgba(58, 58, 82, 0.7);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
       text-align: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      position: relative;
     }
+    
+    .produk:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+      border-color: var(--primary);
+    }
+    
     .produk img {
       width: 100%;
-      border-radius: 0.5rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+      aspect-ratio: 16/9;
+      object-fit: cover;
     }
-    button {
-      background-color: #ff6b81;
-      color: #fff;
+    
+    .produk:hover img {
+      transform: scale(1.03);
+    }
+    
+    .produk h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--light);
+    }
+    
+    .produk p {
+      margin-bottom: 1rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+    
+    .produk select {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 8px;
       border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
+      background-color: rgba(255,255,255,0.1);
+      color: var(--light);
+      margin-bottom: 1rem;
+      font-family: inherit;
+    }
+    
+    .produk select:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    
+    .stok {
+      font-weight: bold;
+      color: var(--success);
+    }
+    
+    button {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: var(--light);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
       cursor: pointer;
       margin-top: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
     }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(108, 92, 231, 0.4);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
     #formSection {
       display: none;
       text-align: center;
-      margin-top: 2rem;
+      margin: 2rem auto;
+      max-width: 500px;
+      background-color: rgba(44, 44, 84, 0.8);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
+    
+    .form-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--light);
+      background: linear-gradient(to right, #a29bfe, #6c5ce7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: none;
+      background-color: rgba(255,255,255,0.1);
+      color: var(--light);
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      background-color: rgba(255,255,255,0.2);
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    
+    .form-input::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    
     .payment-buttons {
-      margin-top: 10px;
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.8rem;
     }
+    
     .payment-buttons button {
-      margin: 0.3rem;
-      background-color: #00b894;
+      background: var(--success);
+      margin: 0;
+      padding: 0.6rem;
+      font-size: 0.9rem;
     }
+    
+    .payment-buttons button:nth-child(1) { background: #06D4F9; } /* Dana */
+    .payment-buttons button:nth-child(2) { background: #00AA13; } /* Gopay */
+    .payment-buttons button:nth-child(3) { background: #4C2A86; } /* OVO */
+    .payment-buttons button:nth-child(4) { background: #FF5F00; } /* ShopeePay */
+    .payment-buttons button:nth-child(5) { background: #5D2E8E; } /* Bank Jago */
+    
+    .payment-buttons button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+    
     .section-title {
       text-align: center;
-      font-size: 1.8rem;
-      margin-top: 2rem;
+      font-size: 2rem;
+      margin: 2rem 0 1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+      color: var(--light);
     }
-    #hargaSection {
-      display: none;
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 3px;
+    }
+    
+    .admin-profile {
       text-align: center;
-      margin-top: 1rem;
+      margin: 3rem auto;
+      max-width: 500px;
+      background-color: rgba(44, 44, 84, 0.7);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .admin-profile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--primary);
+      margin-bottom: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    .admin-profile h3 {
+      margin-bottom: 1rem;
+      color: var(--light);
+    }
+    
+    .whatsapp-btn {
+      background: linear-gradient(45deg, #25D366, #128C7E);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+    
+    .whatsapp-btn i {
+      font-size: 1.2rem;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+      backdrop-filter: blur(5px);
+    }
+    
+    .overlay.active {
+      display: block;
+    }
+    
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--success);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 1001;
+      display: none;
+      animation: slideIn 0.3s ease forwards;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 1rem;
+      }
+      
+      .search-bar {
+        width: 60%;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        padding: 1rem;
+      }
+      
+      .title {
+        font-size: 1.2rem;
+      }
+      
+      .search-bar {
+        width: 50%;
+        padding: 0.5rem;
+      }
+      
+      .payment-buttons {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
 <body>
   <div class="sidebar" id="sidebar">
-    <a href="#">Home</a>
-    <a href="#produk">Produk</a>
-    <a href="#aplikasi">Aplikasi Premium</a>
+    <a href="#home"><i class="fas fa-home"></i> Home</a>
+    <a href="#produk"><i class="fas fa-box-open"></i> Produk</a>
+    <a href="#aplikasi"><i class="fas fa-mobile-alt"></i> Aplikasi Premium</a>
     <i class="fas fa-times close-sidebar" id="closeSidebar" onclick="toggleSidebar()"></i>
   </div>
+  
+  <div class="overlay" id="overlay"></div>
+  
+  <div class="notification" id="notification"></div>
 
   <header>
     <i class="fas fa-bars menu-toggle" onclick="toggleSidebar()"></i>
-    <span class="title">Fajar Store</span>
+    <span class="title">FAJAR OFFICIAL</span>
     <input type="text" class="search-bar" placeholder="Cari produk...">
   </header>
-<h2 class="section-title" id="home"> KONTAK ADMIN</h2>
-<div style="text-align: center; margin-top: 2rem;">
-  <img src="https://img1.pixhost.to/images/5527/595378616_fajarshop.jpg" alt="Admin Foto" style="width: 150px; border-radius: 50%; box-shadow: 0 0 10px #000;">
-  <h3>Hubungi Admin</h3>
-  <p>jika mau qris chat admin saja
-  </p>
-  <button onclick="window.open('https://wa.me/6285600753349', '_blank')" style="background-color: #00b894; padding: 0.7rem 1.2rem; font-size: 1rem; border: none; border-radius: 0.5rem; cursor: pointer;">Chat via WhatsApp</button>
-</div>
+  
+  <div class="admin-profile" id="home">
+    <img src="https://img1.pixhost.to/images/5527/595378616_fajarshop.jpg" alt="Admin Foto">
+    <h3>Hubungi Admin</h3>
+    <button class="whatsapp-btn" onclick="window.open('https://wa.me/6285600753349', '_blank')">
+      <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+    </button>
+  </div>
+  
   <h2 class="section-title" id="produk">Produk Digital</h2>
   <div class="container">
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5524/595337391_fajarshop.jpg" alt="VPS">
       <h3>VPS BY DO</h3>
+      <p>VPS dengan performa tinggi dari Digital Ocean</p>
       <p>Harga:
-        <select>
-          <option>1GB - 2k</option>
-          <option>2GB - 3k</option>
-          <option>3GB - 4k</option>
-          <option>4GB - 5k</option>
-          <option>5GB - 6k</option>
-          <option>6GB - 7k</option>
-          <option>7GB - 8k</option>
-          <option>8GB - 9k</option>
-          <option>9GB - 10k</option>
-          <option>10GB - 11k</option>
-          <option>unli - 15k</option>
+        <select class="harga-select">
+          <option value="2000">1GB - Rp 2.000</option>
+          <option value="3000">2GB - Rp 3.000</option>
+          <option value="4000">3GB - Rp 4.000</option>
+          <option value="5000">4GB - Rp 5.000</option>
+          <option value="6000">5GB - Rp 6.000</option>
+          <option value="7000">6GB - Rp 7.000</option>
+          <option value="8000">7GB - Rp 8.000</option>
+          <option value="9000">8GB - Rp 9.000</option>
+          <option value="10000">9GB - Rp 10.000</option>
+          <option value="11000">10GB - Rp 11.000</option>
+          <option value="15000">unli - Rp 15.000</option>
         </select>
       </p>
       <p class="stok">Stok: <span>UNLIMITED</span></p>
-      <button onclick="bukaForm('VPS DO')">Beli</button>
+      <button onclick="bukaForm('VPS DO', this)">Beli Sekarang</button>
     </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5524/595337304_fajarshop.jpg" alt="Digital Ocean">
       <h3>DIGITAL OCEAN</h3>
+      <p>Akun Digital Ocean dengan berbagai pilihan droplet</p>
       <p>Harga:
-        <select id="harga-digitalocean">
-          <option>3 Droplet - 135k</option>
-          <option>10 Droplet - 185k</option>
+        <select class="harga-select">
+          <option value="135000">3 Droplet - Rp 135.000</option>
+          <option value="185000">10 Droplet - Rp 185.000</option>
         </select>
       </p>
       <p class="stok">Stok: <span>3</span></p>
-      <button onclick="bukaForm('DIGITAL OCEAN')">Beli</button>
+      <button onclick="bukaForm('DIGITAL OCEAN', this)">Beli Sekarang</button>
     </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5524/595337355_fajarshop.jpg" alt="Pterodactyl">
       <h3>PANEL PTERODACTYL</h3>
-       <p>Harga:
-        <select>
-          <option>1GB - 2k</option>
-          <option>2GB - 3k</option>
-          <option>3GB - 4k</option>
-          <option>4GB - 5k</option>
-          <option>5GB - 6k</option>
-          <option>6GB - 7k</option>
-          <option>7GB - 8k</option>
-          <option>8GB - 9k</option>
-          <option>9GB - 10k</option>
-          <option>10GB - 11k</option>
-          <option>unli - 15k</option>
+      <p>Panel kontrol game server yang powerful</p>
+      <p>Harga:
+        <select class="harga-select">
+          <option value="2000">1GB - Rp 2.000</option>
+          <option value="3000">2GB - Rp 3.000</option>
+          <option value="4000">3GB - Rp 4.000</option>
+          <option value="5000">4GB - Rp 5.000</option>
+          <option value="6000">5GB - Rp 6.000</option>
+          <option value="7000">6GB - Rp 7.000</option>
+          <option value="8000">7GB - Rp 8.000</option>
+          <option value="9000">8GB - Rp 9.000</option>
+          <option value="10000">9GB - Rp 10.000</option>
+          <option value="11000">10GB - Rp 11.000</option>
+          <option value="15000">unli - Rp 15.000</option>
         </select>
       </p>
       <p class="stok">Stok: <span>UNLIMITED</span></p>
-      <button onclick="bukaForm('PANEL PTERODACTYL')">Beli</button>
+      <button onclick="bukaForm('PANEL PTERODACTYL', this)">Beli Sekarang</button>
     </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5524/595337535_fajarshop.jpg" alt="Reseller">
       <h3>RESELLER</h3>
+      <p>Program reseller dengan keuntungan menarik</p>
       <p>Harga:
-        <select>
-          <option>Reseller Tier 1 - 25k</option>
-          <option>Reseller Tier 2 - 30k (PERMANEN)</option>
+        <select class="harga-select">
+          <option value="25000">Reseller Tier 1 - Rp 25.000</option>
+          <option value="30000">Reseller Tier 2 - Rp 30.000 (PERMANEN)</option>
         </select>
       </p>
       <p class="stok">Stok: <span>UNLIMITED</span></p>
-      <button onclick="bukaForm('RESELLER')">Beli</button>
+      <button onclick="bukaForm('RESELLER', this)">Beli Sekarang</button>
     </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5524/595337535_fajarshop.jpg" alt="Admin Panel">
       <h3>ADMIN PANEL</h3>
+      <p>Panel admin dengan fitur lengkap</p>
       <p>Harga:
-        <select>
-          <option>Basic Admin - 35k</option>
-          <option>Advanced Admin - 40k (PERMANEN)</option>
+        <select class="harga-select">
+          <option value="35000">Basic Admin - Rp 35.000</option>
+          <option value="40000">Advanced Admin - Rp 40.000 (PERMANEN)</option>
         </select>
       </p>
       <p class="stok">Stok: <span>UNLIMITED</span></p>
-      <button onclick="bukaForm('ADMIN PANEL')">Beli</button>
+      <button onclick="bukaForm('ADMIN PANEL', this)">Beli Sekarang</button>
     </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5524/595337470_fajarshop.jpg" alt="PT Panel">
       <h3>PT PANEL</h3>
+      <p>Panel PT dengan berbagai fitur premium</p>
       <p>Harga:
-        <select>
-          <option>Starter PT Panel - 45k</option>
-          <option>Premium PT Panel - 50k (PERMANEN)</option>
+        <select class="harga-select">
+          <option value="45000">Starter PT Panel - Rp 45.000</option>
+          <option value="50000">Premium PT Panel - Rp 50.000 (PERMANEN)</option>
         </select>
       </p>
       <p class="stok">Stok: <span>4</span></p>
-      <button onclick="bukaForm('PT PANEL')">Beli</button>
+      <button onclick="bukaForm('PT PANEL', this)">Beli Sekarang</button>
     </div>
   </div>
+  
   <h2 class="section-title" id="aplikasi">Aplikasi Premium</h2>
   <div class="container">
     <div class="produk">
@@ -255,18 +602,16 @@
 <p>SILAHKAN DI CO YA KAK !
 </p>
       <p>Harga:
-        <select>
-          <option>1 BULAN - 6k
-          </option>
-          <option>OWNER 1 BULAN- 11k
-          </option>
-          <option>PAKET 10 AKUN OWNER - 35k
-          <option>1 TAHUN - 16k
-             </option>
+        <select class="harga-select">
+          <option value="6000">1 BULAN - Rp 6.000</option>
+          <option value="11000">OWNER 1 BULAN - Rp 11.000</option>
+          <option value="35000">PAKET 10 AKUN OWNER - Rp 35.000</option>
+          <option value="16000">1 TAHUN - Rp 16.000</option>
         </select>
-        </p>
-      <button onclick="bukaForm('CANVA PREMIUM')">Beli</button>
-      </div>
+      </p>
+      <button onclick="bukaForm('CANVA PREMIUM', this)">Beli Sekarang</button>
+    </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5527/595372861_fajarshop.jpg" alt="Netflix">
       <h3>NETFLIX PREMIUM</h3>
@@ -287,15 +632,15 @@ S YANG CO 1 USER 1 PROFILE ]
 <p>— HARGA PER 1 PERANGKAT
 </p>
       <p>Harga:
-        <select>
-          <option>1 PROFIL 2 USER - 25k</option>
-          <option>1 PROFIL 1 USER - 30k
-          </option>
-          <option>1 PROFIL PRIFAT - 140k
-            </option>
+        <select class="harga-select">
+          <option value="25000">1 PROFIL 2 USER - Rp 25.000</option>
+          <option value="30000">1 PROFIL 1 USER - Rp 30.000</option>
+          <option value="140000">1 PROFIL PRIFAT - Rp 140.000</option>
         </select>
-      <button onclick="bukaForm('NETFLIX PREMIUM')">Beli</button>
-      </div>
+      </p>
+      <button onclick="bukaForm('NETFLIX PREMIUM', this)">Beli Sekarang</button>
+    </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5527/595373051_fajarshop.jpg" alt="Capcut">
       <h3>CAPCUT PREMIUM</h3>
@@ -317,14 +662,15 @@ MPLATE PRO UNLOCKED
 
 <p>— CLOUD STORAGE 100GB
 </p>
-     <p>Harga:
-        <select>
-          <option>7 HARI SHARING - 7k</option>
-          <option>1 BULAN SHARING - 17k
-          </option>
+      <p>Harga:
+        <select class="harga-select">
+          <option value="7000">7 HARI SHARING - Rp 7.000</option>
+          <option value="17000">1 BULAN SHARING - Rp 17.000</option>
         </select>
-      <button onclick="bukaForm('CAPCUT PREMIUM')">Beli</button>
-      </div>
+      </p>
+      <button onclick="bukaForm('CAPCUT PREMIUM', this)">Beli Sekarang</button>
+    </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5527/595373160_fajarshop.jpg" alt="Alight">
       <h3>ALIGHT MOTION PREMIUM</h3>
@@ -343,15 +689,15 @@ MPLATE PRO UNLOCKED
 <p>- SUPPORT ANDROID / IOS
 </p>
       <p>Harga:
-        <select>
-          <option>IOS 1 TAHUN - 8k</option>
-          <option>1 TAHUN ANDROID - 8k
-          </option>
-          <option>PAKET 10 AKUN - 22k
-          </option>
+        <select class="harga-select">
+          <option value="8000">IOS 1 TAHUN - Rp 8.000</option>
+          <option value="8000">1 TAHUN ANDROID - Rp 8.000</option>
+          <option value="22000">PAKET 10 AKUN - Rp 22.000</option>
         </select>
-      <button onclick="bukaForm('ALIGHT MOTION PREMIUM')">Beli</button>
-      </div>
+      </p>
+      <button onclick="bukaForm('ALIGHT MOTION PREMIUM', this)">Beli Sekarang</button>
+    </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5527/595372981_fajarshop.jpg" alt="Spotify">
       <h3>SPOTIFY PREMIUM</h3>
@@ -363,13 +709,14 @@ MPLATE PRO UNLOCKED
 DARI AKUN PRIBADI
 </p>
       <p>Harga:
-        <select>
-          <option>1 BULAN [NO GARANSI]- 20k</option>
-          <option>1 BULAN [GARANSI] - 27k
-            </option>
+        <select class="harga-select">
+          <option value="20000">1 BULAN [NO GARANSI] - Rp 20.000</option>
+          <option value="27000">1 BULAN [GARANSI] - Rp 27.000</option>
         </select>
-      <button onclick="bukaForm('SPOTIFY PREMIUM')">Beli</button>
-      </div>
+      </p>
+      <button onclick="bukaForm('SPOTIFY PREMIUM', this)">Beli Sekarang</button>
+    </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5527/595372913_fajarshop.jpg" alt="Youtube">
       <h3>YOUTUBE PREMIUM</h3>
@@ -397,22 +744,20 @@ RDER
 
 <p>— DOWNLOAD VIDEO FULL HD
 </p>
-     <p>Harga:
-        <select>
-          <option>1 BULAN [AKUN BUYER]- 7k</option>
-          <option>3 BULAN [NO GARANSI] - 22k
-          </option>
-          <option>3 BULAN [GARANSI] - 30k
-          </option>
-          <option>1 BULAN [AKUN ADMIN] - 8k
-          </option>
-          <option>FAMHEAD 1 BULAN - 17k
-          </option>
+      <p>Harga:
+        <select class="harga-select">
+          <option value="7000">1 BULAN [AKUN BUYER] - Rp 7.000</option>
+          <option value="22000">3 BULAN [NO GARANSI] - Rp 22.000</option>
+          <option value="30000">3 BULAN [GARANSI] - Rp 30.000</option>
+          <option value="8000">1 BULAN [AKUN ADMIN] - Rp 8.000</option>
+          <option value="17000">FAMHEAD 1 BULAN - Rp 17.000</option>
         </select>
-      <button onclick="bukaForm('YOUTUBE PREMIUM')">Beli</button>
-      </div>
+      </p>
+      <button onclick="bukaForm('YOUTUBE PREMIUM', this)">Beli Sekarang</button>
+    </div>
+    
     <div class="produk">
-     <img src="https://img1.pixhost.to/images/5527/595373242_fajarshop.jpg" alt="Camscanner"> 
+      <img src="https://img1.pixhost.to/images/5527/595373242_fajarshop.jpg" alt="Camscanner">
       <h3>CAMSCANNER PREMIUM</h3>
       <p>Camscanner
 <p>— UNLOCK FITUR PRO
@@ -424,11 +769,13 @@ RDER
 <p>— SCAN HD QUALITY
 </p>
       <p>Harga:
-        <select>
-          <option>1 BULAN SHARING- 12k</option>
+        <select class="harga-select">
+          <option value="12000">1 BULAN SHARING - Rp 12.000</option>
         </select>
-      <button onclick="bukaForm('CAMSCANNER PREMIUM')">Beli</button>
-      </div>
+      </p>
+      <button onclick="bukaForm('CAMSCANNER PREMIUM', this)">Beli Sekarang</button>
+    </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5527/595373292_fajarshop.jpg" alt="ChatGpt">
       <h3>CHAT GPT PREMIUM</h3>
@@ -458,13 +805,14 @@ I.
 <p>7. Multitasking: Mampu melayani banyak pengguna sekaligus untuk aplikasi dengan interaksi tinggi
 </p>
       <p>Harga:
-        <select>
-          <option>7 HARI SHARING- 22k</option>
-          <option>3 BULAN SHARING - 35k
-          </option>
-           </select>
-      <button onclick="bukaForm('CHAT GOT PREMIUM')">Beli</button>
-      </div>
+        <select class="harga-select">
+          <option value="22000">7 HARI SHARING - Rp 22.000</option>
+          <option value="35000">3 BULAN SHARING - Rp 35.000</option>
+        </select>
+      </p>
+      <button onclick="bukaForm('CHAT GPT PREMIUM', this)">Beli Sekarang</button>
+    </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5524/595337162_fajarshop.jpg" alt="Picsart">
       <h3>PICSART PREMIUM</h3>
@@ -499,16 +847,15 @@ AIN APAPUN
 
 <p>Open juga reseller/dropshiper bagi yang berminat silahkan chat admin
 </p>
-       <p>Harga:
-        <select>
-          <option>1 BULAN- 15k
-          </option>
-          <option>1 BULAN PRIVAT - 20k
-          </option>
-           </select>
-           </p>
-      <button onclick="bukaForm('PICSART PREMIUM')">Beli</button>
-      </div>
+      <p>Harga:
+        <select class="harga-select">
+          <option value="15000">1 BULAN - Rp 15.000</option>
+          <option value="20000">1 BULAN PRIVAT - Rp 20.000</option>
+        </select>
+      </p>
+      <button onclick="bukaForm('PICSART PREMIUM', this)">Beli Sekarang</button>
+    </div>
+    
     <div class="produk">
       <img src="https://img1.pixhost.to/images/5527/595375350_fajarshop.jpg" alt="Remini">
       <h3>REMINI PREMIUM</h3>
@@ -526,66 +873,170 @@ AIN APAPUN
 <p>— SUPPORT ALL
 </p>
       <p>Harga:
-        <select>
-          <option>1 BULAN- 20k
-           </option>
-           </select>
-           </p>
-      <button onclick="bukaForm('REMINI PREMIUM')">Beli</button>
-      </div> 
-  </div>  <div id="formSection">
-    <p style="color: yellow; font-weight: bold;">Silakan lengkapi data dan pilih metode pembayaran di bawah ini!</p>
-    <input type="text" id="wa" placeholder="Masukkan Nomor WhatsApp" style="padding:0.5rem; width:80%; max-width:300px;">
-    <br><br>
-    <button onclick="kirimData()">Kirim</button><div id="payment-options" class="payment-buttons" style="display:none;">
-  <p style="margin-top:1rem;">Pilih Metode Pembayaran:</p>
-  <button onclick="salinPembayaran('085179732934')">Dana</button>
-  <button onclick="salinPembayaran('085600753349')">Gopay</button>
-  <button onclick="salinPembayaran('085600753349')">OVO</button>
-  <button onclick="salinPembayaran('085600753349')">ShopeePay</button>
-  <button onclick="salinPembayaran('100915745165')">Bank Jago</button>
-</div>
+        <select class="harga-select">
+          <option value="20000">1 BULAN - Rp 20.000</option>
+        </select>
+      </p>
+      <button onclick="bukaForm('REMINI PREMIUM', this)">Beli Sekarang</button>
+    </div>
+  </div>
+  
+  <div id="formSection">
+    <h3 class="form-title">Formulir Pembelian</h3>
+    <p style="color: #fdcb6e; margin-bottom: 1.5rem;">Silakan lengkapi data dan pilih metode pembayaran</p>
+    
+    <input type="text" id="nama" class="form-input" placeholder="Nama Lengkap">
+    <input type="text" id="wa" class="form-input" placeholder="Nomor WhatsApp (contoh: 08123456789)">
+    <input type="text" id="produk" class="form-input" placeholder="Produk" readonly>
+    <input type="text" id="harga" class="form-input" placeholder="Harga" readonly>
+    
+    <button onclick="kirimData()" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+      <i class="fas fa-paper-plane"></i> Lanjutkan Pembayaran
+    </button>
+    
+    <div id="payment-options" class="payment-buttons" style="display:none;">
+      <p style="margin: 1rem 0; color: #fdcb6e; font-weight: bold;">Pilih Metode Pembayaran:</p>
+      <button onclick="pilihPembayaran('Dana', '085179732934')">Dana</button>
+      <button onclick="pilihPembayaran('Gopay', '085600753349')">Gopay</button>
+      <button onclick="pilihPembayaran('OVO', '085600753349')">OVO</button>
+      <button onclick="pilihPembayaran('ShopeePay', '085600753349')">ShopeePay</button>
+      <button onclick="pilihPembayaran('Bank Jago', '100915745165')">Bank Jago</button>
+    </div>
+  </div>
 
-  </div>  <script>
-    let produk = "";
-
+  <script>
+    let currentProduct = "";
+    let currentPrice = "";
+    let selectedPaymentMethod = "";
+    let selectedPaymentNumber = "";
+    
     function toggleSidebar() {
       const sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("active");
-      
+      const overlay = document.getElementById("overlay");
       const closeSidebar = document.getElementById("closeSidebar");
+      
+      sidebar.classList.toggle("active");
+      overlay.classList.toggle("active");
+      
       if (sidebar.classList.contains("active")) {
         closeSidebar.style.display = "block";
       } else {
         closeSidebar.style.display = "none";
       }
     }
-
-    function bukaForm(namaProduk) {
-      produk = namaProduk;
+    
+    function showNotification(message) {
+      const notification = document.getElementById("notification");
+      notification.textContent = message;
+      notification.style.display = "block";
+      
+      setTimeout(() => {
+        notification.style.display = "none";
+      }, 3000);
+    }
+    
+    function bukaForm(namaProduk, element) {
+      currentProduct = namaProduk;
+      const parent = element.closest('.produk');
+      const select = parent.querySelector('.harga-select');
+      currentPrice = select.options[select.selectedIndex].text;
+      
+      document.getElementById("produk").value = namaProduk;
+      document.getElementById("harga").value = currentPrice;
       document.getElementById("formSection").style.display = "block";
       document.getElementById("payment-options").style.display = "none";
+      document.getElementById("nama").value = "";
       document.getElementById("wa").value = "";
-      document.getElementById("wa").scrollIntoView({ behavior: "smooth" });
+      
+      // Scroll to form
+      document.getElementById("formSection").scrollIntoView({ behavior: "smooth" });
     }
-
+    
     function kirimData() {
-      const wa = document.getElementById("wa").value;
-      if (!wa) {
-        alert("Masukkan nomor WhatsApp terlebih dahulu!");
+      const nama = document.getElementById("nama").value.trim();
+      const wa = document.getElementById("wa").value.trim();
+      
+      if (!nama) {
+        showNotification("Masukkan nama lengkap terlebih dahulu!");
         return;
       }
-      const pesan = `Halo, saya ingin beli *${produk}*\nNomor WhatsApp: ${wa}`;
-      const url = `https://wa.me/6285179732934?text=${encodeURIComponent(pesan)}`;
-      window.open(url, '_blank');
-      document.getElementById("payment-options").style.display = "block";
+      
+      if (!wa) {
+        showNotification("Masukkan nomor WhatsApp terlebih dahulu!");
+        return;
+      }
+      
+      // Validasi nomor WhatsApp
+      if (!/^(\+62|62|0)8[1-9][0-9]{6,9}$/.test(wa)) {
+        showNotification("Masukkan nomor WhatsApp yang valid!");
+        return;
+      }
+      
+      // Format nomor WhatsApp
+      let formattedWA = wa;
+      if (formattedWA.startsWith("0")) {
+        formattedWA = "62" + formattedWA.substring(1);
+      } else if (formattedWA.startsWith("8")) {
+        formattedWA = "62" + formattedWA;
+      } else if (formattedWA.startsWith("+62")) {
+        formattedWA = formattedWA.substring(1);
+      }
+      
+      document.getElementById("wa").value = formattedWA;
+      document.getElementById("payment-options").style.display = "grid";
+      document.getElementById("payment-options").scrollIntoView({ behavior: "smooth" });
     }
-
-    function salinPembayaran(metode) {
-      navigator.clipboard.writeText(metode).then(() => {
-        alert("Metode pembayaran " + metode + " telah disalin!");
-        document.getElementById("formSection").style.display = "none";
+    
+    function pilihPembayaran(method, number) {
+      selectedPaymentMethod = method;
+      selectedPaymentNumber = number;
+      
+      const nama = document.getElementById("nama").value;
+      const wa = document.getElementById("wa").value;
+      const produk = document.getElementById("produk").value;
+      const harga = document.getElementById("harga").value;
+      
+      // Salin nomor pembayaran ke clipboard
+      navigator.clipboard.writeText(number).then(() => {
+        showNotification(`Nomor ${method} (${number}) telah disalin!`);
       });
+      
+      // Buat pesan WhatsApp
+      const pesan = `Halo admin Fajar Store, saya *${nama}* ingin membeli produk:\n\n` +
+                    `*Produk:* ${produk}\n` +
+                    `*Harga:* ${harga}\n` +
+                    `*Metode Pembayaran:* ${method}\n` +
+                    `*Nomor Pembayaran:* ${number}\n\n` +
+                    `Saya sudah melakukan transfer, berikut buktinya: [upload bukti transfer di WhatsApp]`;
+      
+      // Redirect ke WhatsApp setelah 2 detik
+      setTimeout(() => {
+        window.open(`https://wa.me/6285600753349?text=${encodeURIComponent(pesan)}`, '_blank');
+        document.getElementById("formSection").style.display = "none";
+      }, 2000);
     }
-  </script></body>
+    
+    // Close sidebar when clicking on overlay
+    document.getElementById("overlay").addEventListener("click", toggleSidebar);
+    
+    // Close form when clicking outside
+    document.addEventListener("click", function(event) {
+      const formSection = document.getElementById("formSection");
+      if (formSection.style.display === "block" && !formSection.contains(event.target)) {
+        // Check if the click is not on any product button
+        const buttons = document.querySelectorAll(".produk button");
+        let isProductButton = false;
+        buttons.forEach(button => {
+          if (button.contains(event.target)) {
+            isProductButton = true;
+          }
+        });
+        
+        if (!isProductButton) {
+          formSection.style.display = "none";
+        }
+      }
+    });
+  </script>
+</body>
 </html>
