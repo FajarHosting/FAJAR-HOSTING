@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produk Digital</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -14,10 +15,50 @@
       overflow-x: hidden;
     }
     header {
-      text-align: center;
-      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
       background-color: #2c2c54;
-      font-size: 2rem;
+    }
+    .menu-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .close-sidebar {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #fff;
+      display: none;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -200px;
+      width: 200px;
+      height: 100%;
+      background-color: #2c2c54;
+      padding: 1rem;
+      transition: left 0.3s ease;
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 1rem 0;
+    }
+    .title {
+      font-size: 1.5rem;
+    }
+    .search-bar {
+      padding: 0.5rem;
+      width: 50%;
+      max-width: 300px;
+      border-radius: 0.5rem;
+      border: none;
     }
     .container {
       display: grid;
@@ -25,14 +66,16 @@
       gap: 1rem;
       padding: 2rem;
     }
-    .product {
+    .produk {
       background-color: #3a3a52;
       border-radius: 1rem;
       padding: 1rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-align: center;
     }
-    .product:hover {
-      transform: scale(1.05);
+    .produk img {
+      width: 100%;
+      border-radius: 0.5rem;
     }
     button {
       background-color: #ff6b81;
@@ -41,9 +84,7 @@
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       cursor: pointer;
-    }
-    .stok-habis {
-      color: red;
+      margin-top: 0.5rem;
     }
     #formSection {
       display: none;
@@ -57,37 +98,63 @@
       margin: 0.3rem;
       background-color: #00b894;
     }
-    .payment-buttons button:hover {
-      background-color: #098b73;
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-top: 2rem;
+    }
+    #hargaSection {
+      display: none;
+      text-align: center;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="https://example.com/dj-music.mp3" type="audio/mpeg">
-  </audio>
+  <div class="sidebar" id="sidebar">
+    <a href="#">Home</a>
+    <a href="#produk">Produk</a>
+    <a href="#aplikasi">Aplikasi Premium</a>
+    <i class="fas fa-times close-sidebar" id="closeSidebar" onclick="toggleSidebar()"></i>
+  </div>
 
-  <header>Daftar Produk Digital</header>
-
+  <header>
+    <i class="fas fa-bars menu-toggle" onclick="toggleSidebar()"></i>
+    <span class="title">Fajar Store</span>
+    <input type="text" class="search-bar" placeholder="Cari produk...">
+  </header>
+<h2 class="section-title" id="home"> KONTAK ADMIN</h2>
+<div style="text-align: center; margin-top: 2rem;">
+  <img src="https://img1.pixhost.to/images/5527/595378616_fajarshop.jpg" alt="Admin Foto" style="width: 150px; border-radius: 50%; box-shadow: 0 0 10px #000;">
+  <h3>Hubungi Admin</h3>
+  <button onclick="window.open('https://wa.me/6285600753349', '_blank')" style="background-color: #00b894; padding: 0.7rem 1.2rem; font-size: 1rem; border: none; border-radius: 0.5rem; cursor: pointer;">Chat via WhatsApp</button>
+</div>
+  <h2 class="section-title" id="produk">Produk Digital</h2>
   <div class="container">
     <div class="produk">
-      <h2>VPS BY DO</h2>
+      <img src="https://img1.pixhost.to/images/5524/595337391_fajarshop.jpg" alt="VPS">
+      <h3>VPS BY DO</h3>
       <p>Harga:
         <select>
-          <option>1vCore 1GB - 30k</option>
-          <option>1vCore 2GB - 40k</option>
-          <option>2vCore 4GB - 45k</option>
-          <option>4vCore 4GB - 55k</option>
-          <option>4vCore 8GB - 60k</option>
-          <option>4vCore 16GB - 80k</option>
+          <option>1GB - 2k</option>
+          <option>2GB - 3k</option>
+          <option>3GB - 4k</option>
+          <option>4GB - 5k</option>
+          <option>5GB - 6k</option>
+          <option>6GB - 7k</option>
+          <option>7GB - 8k</option>
+          <option>8GB - 9k</option>
+          <option>9GB - 10k</option>
+          <option>10GB - 11k</option>
+          <option>unli - 15k</option>
         </select>
       </p>
-      <p class="stok">Stok: <span>3</span></p>
-      <button onclick="bukaForm('VPS')">Beli</button>
+      <p class="stok">Stok: <span>UNLIMITED</span></p>
+      <button onclick="bukaForm('VPS DO')">Beli</button>
     </div>
-
     <div class="produk">
-      <h2>DIGITAL OCEAN</h2>
+      <img src="https://img1.pixhost.to/images/5524/595337304_fajarshop.jpg" alt="Digital Ocean">
+      <h3>DIGITAL OCEAN</h3>
       <p>Harga:
         <select id="harga-digitalocean">
           <option>3 Droplet - 135k</option>
@@ -97,10 +164,10 @@
       <p class="stok">Stok: <span>3</span></p>
       <button onclick="bukaForm('DIGITAL OCEAN')">Beli</button>
     </div>
-
     <div class="produk">
-      <h2>PANEL PTERODACTYL</h2>
-      <p>Harga:
+      <img src="https://img1.pixhost.to/images/5524/595337355_fajarshop.jpg" alt="Pterodactyl">
+      <h3>PANEL PTERODACTYL</h3>
+       <p>Harga:
         <select>
           <option>1GB - 2k</option>
           <option>2GB - 3k</option>
@@ -118,9 +185,9 @@
       <p class="stok">Stok: <span>UNLIMITED</span></p>
       <button onclick="bukaForm('PANEL PTERODACTYL')">Beli</button>
     </div>
-
     <div class="produk">
-      <h2>RESELLER</h2>
+      <img src="https://img1.pixhost.to/images/5524/595337535_fajarshop.jpg" alt="Reseller">
+      <h3>RESELLER</h3>
       <p>Harga:
         <select>
           <option>Reseller Tier 1 - 25k</option>
@@ -130,9 +197,9 @@
       <p class="stok">Stok: <span>UNLIMITED</span></p>
       <button onclick="bukaForm('RESELLER')">Beli</button>
     </div>
-
     <div class="produk">
-      <h2>ADMIN PANEL</h2>
+      <img src="https://img1.pixhost.to/images/5524/595337535_fajarshop.jpg" alt="Admin Panel">
+      <h3>ADMIN PANEL</h3>
       <p>Harga:
         <select>
           <option>Basic Admin - 35k</option>
@@ -142,9 +209,9 @@
       <p class="stok">Stok: <span>UNLIMITED</span></p>
       <button onclick="bukaForm('ADMIN PANEL')">Beli</button>
     </div>
-
     <div class="produk">
-      <h2>PT PANEL</h2>
+      <img src="https://img1.pixhost.to/images/5524/595337470_fajarshop.jpg" alt="PT Panel">
+      <h3>PT PANEL</h3>
       <p>Harga:
         <select>
           <option>Starter PT Panel - 45k</option>
@@ -155,25 +222,348 @@
       <button onclick="bukaForm('PT PANEL')">Beli</button>
     </div>
   </div>
+  <h2 class="section-title" id="aplikasi">Aplikasi Premium</h2>
+  <div class="container">
+    <div class="produk">
+      <img src="https://img1.pixhost.to/images/5527/595372798_fajarshop.jpg" alt="Canva">
+      <h3>CANVA PREMIUM</h3>
+      <p>CANVA TEAM
 
-  <div id="formSection">
+
+<p>ADMIN AKAN MENGIRIMKAN LINK UNDANGAN !
+
+<p>— AFTER SALES JIKA AKUN BERMASALAH !
+
+<p>— AKUN SENDIRI
+
+<p>— BEBAS DESAIN APAPUN
+
+<p>— 4 JUTA+ TEMPLATE PRO
+
+<p>— 1000 FONT LEBIH
+
+<p>— BRAND KIT
+
+<p>— UPLOAD FONT
+
+<p>— LEGAL & BERGARANSI
+
+<p>— GARANSI DIBERIKAN FULL SAMPAI HABIS !
+
+<p>SILAHKAN DI CO YA KAK !
+</p>
+      <p>Harga:
+        <select>
+          <option>1 BULAN - 6k
+          </option>
+          <option>OWNER 1 BULAN- 11k
+          </option>
+          <option>PAKET 10 AKUN OWNER - 35k
+          <option>1 TAHUN - 16k
+             </option>
+        </select>
+        </p>
+      <button onclick="bukaForm('CANVA PREMIUM')">Beli</button>
+      </div>
+    <div class="produk">
+      <img src="https://img1.pixhost.to/images/5527/595372861_fajarshop.jpg" alt="Netflix">
+      <h3>NETFLIX PREMIUM</h3>
+      <p>NETFLIX PREMIUM
+
+
+
+<p> — SUPPORT ALL DEVICE
+
+<p>— FULL GARANSI
+
+<p> — RESOLUSI 4K UHD
+
+<p>— BEBAS GANTI NAMA PROFILE DAN PIN [ KHUSU
+
+S YANG CO 1 USER 1 PROFILE ]
+
+<p>— HARGA PER 1 PERANGKAT
+</p>
+      <p>Harga:
+        <select>
+          <option>1 PROFIL 2 USER - 25k</option>
+          <option>1 PROFIL 1 USER - 30k
+          </option>
+          <option>1 PROFIL PRIFAT - 140k
+            </option>
+        </select>
+      <button onclick="bukaForm('NETFLIX PREMIUM')">Beli</button>
+      </div>
+    <div class="produk">
+      <img src="https://img1.pixhost.to/images/5527/595373051_fajarshop.jpg" alt="Capcut">
+      <h3>CAPCUT PREMIUM</h3>
+      <p>CAPCUT SHARING ACCOUNT YA!
+
+
+
+<p>FITUR & BENEFIT
+
+
+
+<p>— EFEK DAN FILTER BERVARIASI
+
+<p>— TOOLS PRO UNLOCKED
+
+<p>— TE
+
+MPLATE PRO UNLOCKED
+
+<p>— CLOUD STORAGE 100GB
+</p>
+     <p>Harga:
+        <select>
+          <option>7 HARI SHARING - 7k</option>
+          <option>1 BULAN SHARING - 17k
+          </option>
+        </select>
+      <button onclick="bukaForm('CAPCUT PREMIUM')">Beli</button>
+      </div>
+    <div class="produk">
+      <img src="https://img1.pixhost.to/images/5527/595373160_fajarshop.jpg" alt="Alight">
+      <h3>ALIGHT MOTION PREMIUM</h3>
+      <p>[!] AKUN DARI ADMIN SUDAH DISEDIAKAN
+
+
+
+<p>[!] FITUR DAN BENEFITS
+
+<p>- NO ADS
+
+<p>- NO WATERMARK
+
+<p>- SUPPORT FILE XML 5MB
+
+<p>- SUPPORT ANDROID / IOS
+</p>
+      <p>Harga:
+        <select>
+          <option>IOS 1 TAHUN - 8k</option>
+          <option>1 TAHUN ANDROID - 8k
+          </option>
+          <option>PAKET 10 AKUN - 22k
+          </option>
+        </select>
+      <button onclick="bukaForm('ALIGHT MOTION PREMIUM')">Beli</button>
+      </div>
+    <div class="produk">
+      <img src="https://img1.pixhost.to/images/5527/595372981_fajarshop.jpg" alt="Spotify">
+      <h3>SPOTIFY PREMIUM</h3>
+      <p>Spotify
+<p>— ANTI IKLAN
+
+<p>— BISA DIBANTU PINDAH PLAYLIST
+
+DARI AKUN PRIBADI
+</p>
+      <p>Harga:
+        <select>
+          <option>1 BULAN [NO GARANSI]- 20k</option>
+          <option>1 BULAN [GARANSI] - 27k
+            </option>
+        </select>
+      <button onclick="bukaForm('SPOTIFY PREMIUM')">Beli</button>
+      </div>
+    <div class="produk">
+      <img src="https://img1.pixhost.to/images/5527/595372913_fajarshop.jpg" alt="Youtube">
+      <h3>YOUTUBE PREMIUM</h3>
+      <p>[!] BACA SAMPAI HABIS AGAR TIDAK MISS
+
+
+
+<p>AKUN YUNGTUB INVITE 1 BULAN ( TIDAK BISA PERPANJANG )
+
+<p>[!] 1 AKUN EMAIL HANYA BISA 2x O
+
+RDER
+
+
+
+<p>[!] FITUR DAN BENEFIT :
+
+
+
+<p>— RESOLUSI QUALITY 1080p
+
+<p>— NONTON SEPUASNYA TANPA IKLAN
+
+<p>— YUNGTUB MUSIC TANPA JEDA
+
+<p>— DOWNLOAD VIDEO FULL HD
+</p>
+     <p>Harga:
+        <select>
+          <option>1 BULAN [AKUN BUYER]- 7k</option>
+          <option>3 BULAN [NO GARANSI] - 22k
+          </option>
+          <option>3 BULAN [GARANSI] - 30k
+          </option>
+          <option>1 BULAN [AKUN ADMIN] - 8k
+          </option>
+          <option>FAMHEAD 1 BULAN - 17k
+          </option>
+        </select>
+      <button onclick="bukaForm('YOUTUBE PREMIUM')">Beli</button>
+      </div>
+    <div class="produk">
+     <img src="https://img1.pixhost.to/images/5527/595373242_fajarshop.jpg" alt="Camscanner"> 
+      <h3>CAMSCANNER PREMIUM</h3>
+      <p>Camscanner
+<p>— UNLOCK FITUR PRO
+
+<p>— NO IKLAN
+
+<p>— NO WATERMARK
+
+<p>— SCAN HD QUALITY
+</p>
+      <p>Harga:
+        <select>
+          <option>1 BULAN SHARING- 12k</option>
+        </select>
+      <button onclick="bukaForm('CAMSCANNER PREMIUM')">Beli</button>
+      </div>
+    <div class="produk">
+      <img src="https://img1.pixhost.to/images/5527/595373292_fajarshop.jpg" alt="ChatGpt">
+      <h3>CHAT GPT PREMIUM</h3>
+      <p>ChatGPT
+<p>CHATGPT OPEN AI
+
+
+
+<p>FITUR DAN BENEFIT
+
+
+
+<p>1. Akses Tak Terbatas: Pengguna mendapatkan akses ke alat dan model eksklusif A
+
+I.  
+
+<p>2. Respons Lebih Cepat: Waktu respons lebih singkat.  
+
+<p>3. Prioritas Fitur Baru: Akses pertama ke fitur seperti aplikasi desktop dan Voice Mode.  
+
+<p>4. Model Eksklusif: Akses ke "o1 pro mode" dengan performa lebih tinggi.  
+
+<p>5. Fleksibilitas: Dapat digunakan untuk riset pasar, pembuatan konten, komposisi musik, menjawab pertanyaan, dan lain-lain.  
+
+<p>6. Meningkatkan Pengalaman Pelanggan: Rekomendasi personal, penjelasan mudah, dan ide inovatif.  
+
+<p>7. Multitasking: Mampu melayani banyak pengguna sekaligus untuk aplikasi dengan interaksi tinggi
+</p>
+      <p>Harga:
+        <select>
+          <option>7 HARI SHARING- 22k</option>
+          <option>3 BULAN SHARING - 35k
+          </option>
+           </select>
+      <button onclick="bukaForm('CHAT GOT PREMIUM')">Beli</button>
+      </div>
+    <div class="produk">
+      <img src="https://img1.pixhost.to/images/5524/595337162_fajarshop.jpg" alt="Picsart">
+      <h3>PICSART PREMIUM</h3>
+      <p>Picsart
+<p>AKUN DARI ADMIN
+
+
+
+<p>— AFTER SALES JIKA AKUN BERMASALAH !
+
+<p>— 30 HARI DURASI
+
+<p>— AKUN SENDIRI
+
+<p>— BEBAS DES
+
+AIN APAPUN
+
+<p>— SUPPORT ALL DEVICE
+
+<p>— RATUSAN FONT 
+
+<p>— FITUR EFEK KHUSUS
+
+<p>— UNLOCK FITUR PRO
+
+<p>— LEGAL & BERGARANSI
+
+<p>— GARANSI DIBERIKAN FULL SAMPAI HABIS !
+
+
+
+<p>Open juga reseller/dropshiper bagi yang berminat silahkan chat admin
+</p>
+       <p>Harga:
+        <select>
+          <option>1 BULAN- 15k
+          </option>
+          <option>1 BULAN PRIVAT - 20k
+          </option>
+           </select>
+           </p>
+      <button onclick="bukaForm('PICSART PREMIUM')">Beli</button>
+      </div>
+    <div class="produk">
+      <img src="https://img1.pixhost.to/images/5527/595375350_fajarshop.jpg" alt="Remini">
+      <h3>REMINI PREMIUM</h3>
+      <p>Remini Pro
+<p>[!] BACA SAMPAI HABIS AGAR TIDAK MISS
+
+
+
+<p>AKUN DARI ADMIN 
+
+
+
+<p>— LOGIN MENGGUNAKAN WEB BUKAN APK
+
+<p>— SUPPORT ALL
+</p>
+      <p>Harga:
+        <select>
+          <option>1 BULAN- 20k
+           </option>
+           </select>
+           </p>
+      <button onclick="bukaForm('REMINI PREMIUM')">Beli</button>
+      </div> 
+  </div>  <div id="formSection">
     <p style="color: yellow; font-weight: bold;">Silakan lengkapi data dan pilih metode pembayaran di bawah ini!</p>
     <input type="text" id="wa" placeholder="Masukkan Nomor WhatsApp" style="padding:0.5rem; width:80%; max-width:300px;">
     <br><br>
-    <button onclick="kirimData()">Kirim</button>
-
-    <div id="payment-options" class="payment-buttons" style="display:none;">
-      <p style="margin-top:1rem;">Pilih Metode Pembayaran:</p>
-      <button onclick="salinPembayaran('085179732934')">Dana</button>
-      <button onclick="salinPembayaran('085600753349')">Gopay</button>
-      <button onclick="salinPembayaran('085600753349')">OVO</button>
-      <button onclick="salinPembayaran('085600753349')">ShopeePay</button>
-      <button onclick="salinPembayaran('100915745165')">Bank Jago</button>
-    </div>
+    <button onclick="kirimData()">Kirim</button><div id="payment-options" class="payment-buttons" style="display:none;">
+  <p style="margin-top:1rem;">Pilih Metode Pembayaran:</p>
+  <button onclick="salinPembayaran('085179732934')">Dana</button>
+  <button onclick="salinPembayaran('085600753349')">Gopay</button>
+  <button onclick="salinPembayaran('085600753349')">OVO</button>
+  <button onclick="salinPembayaran('085600753349')">ShopeePay</button>
+  <button onclick="salinPembayaran('100915745165')">Bank Jago</button>
+<button onclick="tampilkanQRIS()">QRIS</button>
   </div>
+  <div id="qrisSection" style="display:none; margin-top: 1rem;">
+    <p>Silakan scan QRIS berikut untuk pembayaran:</p>
+    <img src="https://link-qris-kamu.com/qris.jpg" alt="QRIS" style="max-width: 200px; border-radius: 10px;">
+  </div>
+</div>
 
-  <script>
+  </div>  <script>
     let produk = "";
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("active");
+      
+      const closeSidebar = document.getElementById("closeSidebar");
+      if (sidebar.classList.contains("active")) {
+        closeSidebar.style.display = "block";
+      } else {
+        closeSidebar.style.display = "none";
+      }
+    }
 
     function bukaForm(namaProduk) {
       produk = namaProduk;
@@ -189,12 +579,9 @@
         alert("Masukkan nomor WhatsApp terlebih dahulu!");
         return;
       }
-
-      const noAdmin = "6285600753349"; // Ganti dengan nomor WhatsApp Admin kamu
-      const pesan = `Halo Admin, saya ingin beli produk:\n\nProduk: ${produk}\nNo WhatsApp Saya: ${wa}`;
-      const linkWA = `https://wa.me/${noAdmin}?text=${encodeURIComponent(pesan)}`;
-
-      window.open(linkWA, '_blank');
+      const pesan = `Halo, saya ingin beli *${produk}*\nNomor WhatsApp: ${wa}`;
+      const url = `https://wa.me/6285179732934?text=${encodeURIComponent(pesan)}`;
+      window.open(url, '_blank');
       document.getElementById("payment-options").style.display = "block";
     }
 
@@ -204,6 +591,22 @@
         document.getElementById("formSection").style.display = "none";
       });
     }
-  </script>
-</body>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+  }
+
+  function bukaForm(namaProduk) {
+    document.getElementById('formSection').style.display = 'block';
+    // Anda bisa menyimpan namaProduk ke variabel jika perlu
+  }
+
+  function bayar(metode) {
+    alert("Kamu memilih pembayaran via " + metode);
+    // Tambahkan logika kirim data jika diperlukan
+  }
+
+  function tampilkanQRIS() {
+    document.getElementById('qrisSection').style.display = 'block';
+  }
+</script></body>
 </html>
