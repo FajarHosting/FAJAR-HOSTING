@@ -542,12 +542,6 @@ AIN APAPUN
   <button onclick="salinPembayaran('085600753349')">OVO</button>
   <button onclick="salinPembayaran('085600753349')">ShopeePay</button>
   <button onclick="salinPembayaran('100915745165')">Bank Jago</button>
-<button onclick="tampilkanQRIS()">QRIS</button>
-  </div>
-  <div id="qrisSection" style="display:none; margin-top: 1rem;">
-    <p>Silakan scan QRIS berikut untuk pembayaran:</p>
-    <img src="https://link-qris-kamu.com/qris.jpg" alt="QRIS" style="max-width: 200px; border-radius: 10px;">
-  </div>
 </div>
 
   </div>  <script>
@@ -591,22 +585,5 @@ AIN APAPUN
         document.getElementById("formSection").style.display = "none";
       });
     }
-  function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('active');
-  }
-
-  function bukaForm(namaProduk) {
-    document.getElementById('formSection').style.display = 'block';
-    // Anda bisa menyimpan namaProduk ke variabel jika perlu
-  }
-
-  function bayar(metode) {
-    alert("Kamu memilih pembayaran via " + metode);
-    // Tambahkan logika kirim data jika diperlukan
-  }
-
-  function tampilkanQRIS() {
-    document.getElementById('qrisSection').style.display = 'block';
-  }
-</script></body>
+  </script></body>
 </html>
