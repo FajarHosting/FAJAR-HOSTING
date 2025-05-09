@@ -443,6 +443,7 @@
 <body>
   <div class="sidebar" id="sidebar">
     <a href="#home"><i class="fas fa-home"></i> Home</a>
+    <a href="#best"><i class="fas fa-box-open"></i> Best produk</a>
     <a href="#produk"><i class="fas fa-box-open"></i> Produk</a>
     <a href="#aplikasi"><i class="fas fa-mobile-alt"></i> Aplikasi Premium</a>
     <i class="fas fa-times close-sidebar" id="closeSidebar" onclick="toggleSidebar()"></i>
@@ -466,7 +467,24 @@
       <i class="fab fa-whatsapp"></i> Chat via WhatsApp
     </button>
   </div>
-  
+  <h2 class="section-title" id="best">Best Produk</h2>
+  <div class="container">
+    <div class="produk">
+      <img src="https://files.catbox.moe/qgwo6u.jpg" alt="Digital Ocean">
+      <h3>ALIBABA CLOUD</h3>
+      <p>MENDAPATKAN AKSES AKUN ALIBABA
+
+<p>BISA BANTU JASA INSTALASI KE VPS ATAU RDP</p>
+      <p>Harga:
+        <select class="harga-select">
+          <option value="80000">3 BULAN R4 C2- Rp 80.000</option>
+          <option value="100000">1 TAHUN R1 C1- Rp 100.000</option>
+        </select>
+      </p>
+      <p class="stok">Stok: <span>3</span></p>
+      <button onclick="bukaForm('DIGITAL OCEAN', this)">Beli Sekarang</button>
+    </div>
+    </div>
   <h2 class="section-title" id="produk">Produk Digital</h2>
   <div class="container">
     <div class="produk">
@@ -490,10 +508,11 @@
     </div>
     
     <div class="produk">
-      <img src="https://img1.pixhost.to/images/5524/595337304_fajarshop.jpg" alt="Digital Ocean">
+      <img src="https://files.catbox.moe/qgwo6u.jpg" alt="Digital Ocean">
       <h3>ALIBABA CLOUD</h3>
-      <p>Akun Alibaba Cloud dengan berbagai pilihan Harga</p>
-      <p>Harga:
+      <p>MENDAPATKAN AKSES AKUN ALIBABA
+
+<p>      <p>Harga:
         <select class="harga-select">
           <option value="80000">3 BULAN R4 C2- Rp 80.000</option>
           <option value="100000">1 TAHUN R1 C1- Rp 100.000</option>
@@ -899,6 +918,8 @@ AIN APAPUN
       <button onclick="pilihPembayaran('OVO', '085600753349')">OVO</button>
       <button onclick="pilihPembayaran('ShopeePay', '085600753349')">ShopeePay</button>
       <button onclick="pilihPembayaran('Bank Jago', '100915745165')">Bank Jago</button>
+      <button onclick="pilihPembayaran ('Payeer usd', 'P1131250815')"
+        >payeer</button>
     </div>
   </div>
 
